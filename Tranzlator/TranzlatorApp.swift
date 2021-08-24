@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import Firebase
+import GoogleSignIn
 
 @main
 struct TranzlatorApp: App {
+    @StateObject var signDelegate = GoogleIDSignInDelegate()
+    init() {
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(signDelegate)
         }
     }
 }
+
